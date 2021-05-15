@@ -8,13 +8,13 @@
     <fragment
             android:id="@+id/navigation_home"
             android:name="com.example.petencyclopedia.ui.Dog.DogListFragment"
-            android:label="@string/title_home"
+            android:label="@string/title_doglist"
             tools:layout="@layout/fragment_doglist" />
 
     <fragment
             android:id="@+id/navigation_dashboard"
             android:name="com.example.petencyclopedia.ui.Cat.CatListFragment"
-            android:label="@string/title_dashboard"
+            android:label="@string/title_catlist"
             tools:layout="@layout/fragment_catlist" />
 
     <fragment
