@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">PetEncyclopedia</string>
+    <string name="btn_accueil">Enter the Encyclopedia</string>
     <string name="message_accueil_btn">Vous allez accéder au PetEncyclopedia !</string>
     <string name="title_activity_naviguation_choice">MainActivity</string>
     <string name="title_home">Home</string>

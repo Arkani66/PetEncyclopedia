@@ -1,4 +1,4 @@
-package com.example.petencyclopedia.ui.home
+package com.example.petencyclopedia.ui.Dog
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

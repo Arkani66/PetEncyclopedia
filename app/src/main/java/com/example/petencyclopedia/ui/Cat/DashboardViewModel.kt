@@ -1,4 +1,4 @@
-package com.example.petencyclopedia.ui.dashboard
+package com.example.petencyclopedia.ui.Cat
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

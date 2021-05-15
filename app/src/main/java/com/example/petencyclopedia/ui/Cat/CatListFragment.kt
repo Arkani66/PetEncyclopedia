@@ -1,4 +1,4 @@
-package com.example.petencyclopedia.ui.dashboard
+package com.example.petencyclopedia.ui.Cat
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.petencyclopedia.R
-import com.example.petencyclopedia.databinding.FragmentDashboardBinding
+import com.example.petencyclopedia.databinding.FragmentCatlistBinding
 
-class DashboardFragment : Fragment() {
+class CatListFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentCatlistBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -28,7 +27,7 @@ class DashboardFragment : Fragment() {
         dashboardViewModel =
             ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentCatlistBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textDashboard
