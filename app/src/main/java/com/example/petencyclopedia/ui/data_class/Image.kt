@@ -5,7 +5,7 @@ package com.example.petencyclopedia.ui.data_class
  */
 data class Image(
     var id : String,
-    var width : Double,
-    var height : Double,
+    var width : Int,
+    var height : Int,
     var url : String
 )

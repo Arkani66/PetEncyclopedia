@@ -4,18 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.petencyclopedia.R
 import com.example.petencyclopedia.databinding.FragmentDoglistBinding
+import com.example.petencyclopedia.presentation.list.PokemonAdapter
 import com.example.petencyclopedia.ui.Dog.dogAPI.Dog
-import com.example.petencyclopedia.ui.Dog.dogAPI.DogAPI
 import com.example.petencyclopedia.ui.Dog.dogAPI.DoggoAdaptater
+import com.example.petencyclopedia.list.Pokemon
+import com.example.petencyclopedia.ui.Dog.dogAPI.DogAPI
+import com.example.petencyclopedia.ui.data_class.Height
+import com.example.petencyclopedia.ui.data_class.Image
+import com.example.petencyclopedia.ui.data_class.Weight
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class DogListFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var homeViewModel: DogViewModel
     private var _binding: FragmentDoglistBinding? = null
     private lateinit var mrecyclerview : RecyclerView
     private val madapterView = DoggoAdaptater(listOf(), ::onClickedDoggo)
@@ -41,16 +43,16 @@ class DogListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        /*homeViewModel =
+            ViewModelProvider(this).get(DogViewModel::class.java)*/
 
         _binding = FragmentDoglistBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+        /*val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
-        })
+        })*/
         return root
     }
 
@@ -63,33 +65,41 @@ class DogListFragment : Fragment() {
         }
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.thedogapi.com/v1/")
-            //.header()
-            //.asString()
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val mdoggoApi: DogAPI = retrofit.create(DogAPI::class.java)
 
-        mdoggoApi.getDoggoList().enqueue(object : Callback<DogResponse> {
-            override fun onFailure(call: Call<DogResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+        mdoggoApi.getDoggoList("api_key=5884f3ba-9b04-4b9c-acbd-7bebfbee73fa").enqueue(object : Callback<List<Dog>> {
+            override fun onFailure(call: Call<List<Dog>>, t: Throwable) {
+                val mdoggoResponse : ArrayList<Dog> = arrayListOf<Dog>().apply {
+                    add(Dog(Weight("6 - 13","3 - 6"), Height("9 - 11.5","23 - 29"),1,"Hasn't work out","default","default","default","default","default","default",
+                        Image("BJa4kxc4X",1600,1199,"https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg")
+                    ))
+                }
+                madapterView.updateList(mdoggoResponse)
             }
 
             override fun onResponse(
-                call: Call<DogResponse>,
-                response: Response<DogResponse>
+                call: Call<List<Dog>>,
+                response: Response<List<Dog>>
             ) {
                 if(response.isSuccessful && response.body()!=null){
-                    val mdoggoResponse : DogResponse = response.body()!!
-                    madapterView.updateList(mdoggoResponse.breeds)
+                    val mdoggoResponse : List<Dog> = response.body()!!
+                    madapterView.updateList(mdoggoResponse)
                 }
             }
         })
+
     }
 
     private fun onClickedDoggo(dog: Dog) {
-        findNavController().navigate(R.id.navigation_dashboard)
+        findNavController().navigate(R.id.navigation_cat)
     }
+
+   /* private fun onClickedPokemon(pokemon: Pokemon) {
+        findNavController().navigate(R.id.navigation_cat)
+    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()

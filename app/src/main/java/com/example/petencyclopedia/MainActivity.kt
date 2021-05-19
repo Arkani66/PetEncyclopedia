@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.petencyclopedia.ui.Dog.DogListFragment
 
 class MainActivity : AppCompatActivity() {
 

@@ -3,16 +3,16 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/mobile_navigation"
-        app:startDestination="@+id/navigation_home">
+        app:startDestination="@+id/navigation_dog">
 
     <fragment
-            android:id="@+id/navigation_home"
+            android:id="@+id/navigation_dog"
             android:name="com.example.petencyclopedia.ui.Dog.DogListFragment"
             android:label="@string/title_doglist"
             tools:layout="@layout/fragment_doglist" />
 
     <fragment
-            android:id="@+id/navigation_dashboard"
+            android:id="@+id/navigation_cat"
             android:name="com.example.petencyclopedia.ui.Cat.CatListFragment"
             android:label="@string/title_catlist"
             tools:layout="@layout/fragment_catlist" />

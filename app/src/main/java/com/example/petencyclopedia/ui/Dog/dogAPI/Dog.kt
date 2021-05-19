@@ -8,15 +8,17 @@ import com.example.petencyclopedia.ui.data_class.Weight
  *Created by $(USER) on $(DATE).
  */
 data class Dog(
-    var id : String,
-    var name : String,
-    var temperament : String,
-    var life_span : String,
-    var alt_names : String,
-    var wikipedia_url : String,
-    var origin : String,
     var weight : Weight,
-    var country_code : String,
     var height : Height,
+    var id : Int,
+    var name : String,
+    var bred_for : String,
+    var breed_group : String,
+    var life_span : String,
+    var temperament : String,
+    //var alt_names : String,
+    //var wikipedia_url : String,
+    var origin : String,
+    var reference_image_id : String,
     var image : Image
 )
