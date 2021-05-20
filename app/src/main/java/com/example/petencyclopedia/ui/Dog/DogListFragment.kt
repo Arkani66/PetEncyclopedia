@@ -30,8 +30,6 @@ class DogListFragment : Fragment() {
     private var _binding: FragmentDoglistBinding? = null
     private lateinit var mrecyclerview : RecyclerView
     private val madapterView = DoggoAdaptater(listOf(), ::onClickedDoggo)
-
-
     private val mlayoutmanager = LinearLayoutManager(context)
 
     // This property is only valid between onCreateView and

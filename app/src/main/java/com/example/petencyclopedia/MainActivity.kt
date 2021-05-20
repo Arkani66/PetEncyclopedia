@@ -10,14 +10,12 @@ import com.example.petencyclopedia.ui.Dog.DogListFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var m_textviewaccueil : TextView
     private lateinit var m_buttonaccueil : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        m_textviewaccueil = findViewById(R.id.accueil_text)
         m_buttonaccueil = findViewById(R.id.accueil_button)
 
         m_buttonaccueil.setOnClickListener {
