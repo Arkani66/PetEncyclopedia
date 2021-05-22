@@ -13,4 +13,6 @@ interface DogAPI {
     @GET("breeds")
     fun getDoggoList(@Query("api_key")  api_key : String): Call<List<Dog>>
 
+    @GET("breeds/search")
+    fun getDoggo(@Query("api_key")  api_key : String, @Query("q") q : String?): Call<Dog>
 }

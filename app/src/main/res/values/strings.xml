@@ -5,6 +5,9 @@
     <string name="title_activity_naviguation_choice">MainActivity</string>
     <string name="title_doglist">Dog</string>
     <string name="title_catlist">Cat</string>
+    <string name="title_dogdetail">Dog Detail</string>
+    <string name="button_return_dog">Retourner voir les catégories de chiens</string>
+    <string name="title_catdetail">Cat Detail</string>
     <string name="title_notifications">Notifications</string>
     <string name="Dogliste_title">Voici les différentes catégories de Chiens</string>
     <string name="Catliste_title">Voici les différentes catégories de Chats</string>

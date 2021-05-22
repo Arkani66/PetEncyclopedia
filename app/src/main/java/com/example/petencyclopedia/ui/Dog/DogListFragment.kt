@@ -4,25 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.petencyclopedia.R
 import com.example.petencyclopedia.databinding.FragmentDoglistBinding
-import com.example.petencyclopedia.presentation.list.PokemonAdapter
 import com.example.petencyclopedia.ui.Dog.dogAPI.Dog
 import com.example.petencyclopedia.ui.Dog.dogAPI.DoggoAdaptater
-import com.example.petencyclopedia.list.Pokemon
-import com.example.petencyclopedia.ui.Dog.dogAPI.DogAPI
+import com.example.petencyclopedia.ui.api.Singleton
 import com.example.petencyclopedia.ui.data_class.Height
 import com.example.petencyclopedia.ui.data_class.Image
 import com.example.petencyclopedia.ui.data_class.Weight
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class DogListFragment : Fragment() {
 
@@ -61,14 +58,8 @@ class DogListFragment : Fragment() {
             layoutManager = this@DogListFragment.mlayoutmanager
             adapter = this@DogListFragment.madapterView
         }
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.thedogapi.com/v1/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
-        val mdoggoApi: DogAPI = retrofit.create(DogAPI::class.java)
-
-        mdoggoApi.getDoggoList("api_key=5884f3ba-9b04-4b9c-acbd-7bebfbee73fa").enqueue(object : Callback<List<Dog>> {
+        Singleton.mdoggoApi.getDoggoList("api_key=5884f3ba-9b04-4b9c-acbd-7bebfbee73fa").enqueue(object : Callback<List<Dog>> {
             override fun onFailure(call: Call<List<Dog>>, t: Throwable) {
                 val mdoggoResponse : ArrayList<Dog> = arrayListOf<Dog>().apply {
                     add(Dog(Weight("6 - 13","3 - 6"), Height("9 - 11.5","23 - 29"),1,"Hasn't work out","default","default","default","default","default","default",
@@ -92,7 +83,12 @@ class DogListFragment : Fragment() {
     }
 
     private fun onClickedDoggo(dog: Dog) {
-        findNavController().navigate(R.id.navigation_cat)
+        val name_doggo = dog.name
+        val bundle = Bundle()
+        bundle.putString("name", name_doggo)
+        val fragment = Fragment()
+        fragment.setArguments(bundle)
+        findNavController().navigate(R.id.navigation_to_dogdetail, bundle)
     }
 
    /* private fun onClickedPokemon(pokemon: Pokemon) {
