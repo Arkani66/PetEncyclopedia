@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayoutScrolling"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         tools:context=".ui.Dog.DogDetailFragment">
@@ -23,6 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_return_dog"
+            android:textFontWeight="4"
+            android:shadowRadius="2.2"
+            android:radius="14.5sp"
             app:layout_constraintTop_toBottomOf="@id/doggo_detail_name"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -38,87 +43,80 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             app:layout_constraintTop_toBottomOf="@+id/doggo_detail_name"/>
 
-   <ScrollView
-           android:layout_height="match_parent"
-           android:layout_width="wrap_content"
-           tools:ignore="MissingConstraints" />
+    <TextView
+            android:id="@+id/doggo_detail_breed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment"
+            app:layout_constraintTop_toBottomOf="@id/doggo_detail_image"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.1"/>
 
-            <TextView
-                    android:id="@+id/doggo_detail_breed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hello_blank_fragment"
-                    app:layout_constraintTop_toBottomOf="@id/doggo_detail_image"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintVertical_bias="0.1"/>
+    <TextureView
+            android:id="@+id/doggo_detail_mlayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/doggo_detail_breed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/doggo_detail_life_span"
+            app:layout_constraintVertical_bias="0.1"/>
 
-            <TextureView
-                    android:id="@+id/doggo_detail_mlayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:visibility="invisible"
-                    app:layout_constraintTop_toBottomOf="@id/doggo_detail_breed"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintBottom_toTopOf="@+id/doggo_detail_life_span"
-                    app:layout_constraintVertical_bias="0.1"/>
+    <TextView
+            android:id="@+id/doggo_detail_weigth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment"
+            app:layout_constraintTop_toTopOf="@id/doggo_detail_mlayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/doggo_detail_height"
+            app:layout_constraintBottom_toBottomOf="@+id/doggo_detail_mlayout" />
 
-            <TextView
-                    android:id="@+id/doggo_detail_weigth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hello_blank_fragment"
-                    app:layout_constraintTop_toTopOf="@id/doggo_detail_mlayout"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@+id/doggo_detail_height"
-                    app:layout_constraintBottom_toBottomOf="@+id/doggo_detail_mlayout" />
+    <TextView
+            android:id="@+id/doggo_detail_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment"
+            app:layout_constraintTop_toTopOf="@id/doggo_detail_mlayout"
+            app:layout_constraintLeft_toRightOf="@id/doggo_detail_weigth"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/doggo_detail_mlayout" />
 
-            <TextView
-                    android:id="@+id/doggo_detail_height"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hello_blank_fragment"
-                    app:layout_constraintTop_toTopOf="@id/doggo_detail_mlayout"
-                    app:layout_constraintLeft_toRightOf="@id/doggo_detail_weigth"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@id/doggo_detail_mlayout" />
+    <TextView
+            android:id="@+id/doggo_detail_life_span"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment"
+            app:layout_constraintTop_toBottomOf="@id/doggo_detail_height"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/doggo_detail_temperament"
+            app:layout_constraintVertical_bias="0.1"/>
 
-            <TextView
-                    android:id="@+id/doggo_detail_life_span"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hello_blank_fragment"
-                    app:layout_constraintTop_toBottomOf="@id/doggo_detail_height"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintBottom_toTopOf="@+id/doggo_detail_temperament"
-                    app:layout_constraintVertical_bias="0.1"/>
+    <TextView
+            android:id="@+id/doggo_detail_temperament"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment"
+            app:layout_constraintTop_toBottomOf="@id/doggo_detail_life_span"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/doggo_detail_origin"
+            app:layout_constraintVertical_bias="0.1"/>
 
-            <TextView
-                    android:id="@+id/doggo_detail_temperament"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hello_blank_fragment"
-                    app:layout_constraintTop_toBottomOf="@id/doggo_detail_life_span"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintBottom_toTopOf="@+id/doggo_detail_origin"
-                    app:layout_constraintVertical_bias="0.1"/>
-
-            <TextView
-                    android:id="@+id/doggo_detail_origin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hello_blank_fragment"
-                    app:layout_constraintTop_toBottomOf="@id/doggo_detail_temperament"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintVertical_bias="0.1"/>
-    />
-
+    <TextView
+            android:id="@+id/doggo_detail_origin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment"
+            app:layout_constraintTop_toBottomOf="@id/doggo_detail_temperament"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.1"/>
 
 
 

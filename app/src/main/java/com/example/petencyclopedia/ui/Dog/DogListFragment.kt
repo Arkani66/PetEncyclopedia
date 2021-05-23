@@ -83,12 +83,13 @@ class DogListFragment : Fragment() {
     }
 
     private fun onClickedDoggo(dog: Dog) {
-        val name_doggo = dog.name
+        /*val name_doggo = dog.name
         val bundle = Bundle()
         bundle.putString("name", name_doggo)
         val fragment = Fragment()
         fragment.setArguments(bundle)
-        findNavController().navigate(R.id.navigation_to_dogdetail, bundle)
+        findNavController().navigate(R.id.navigation_to_dogdetail, bundle)*/
+        findNavController().navigate(R.id.navigation_to_dogdetail)
     }
 
    /* private fun onClickedPokemon(pokemon: Pokemon) {

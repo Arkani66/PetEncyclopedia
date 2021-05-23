@@ -12,7 +12,8 @@
             android:theme="@style/AppTheme">
         <activity
                 android:name=".Naviguation_Choice"
-                android:label="@string/title_activity_naviguation_choice"></activity>
+                android:label="@string/title_activity_naviguation_choice"
+                ></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

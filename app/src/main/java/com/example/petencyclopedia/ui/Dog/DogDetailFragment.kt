@@ -16,6 +16,7 @@ import com.example.petencyclopedia.ui.Dog.dogAPI.DogAPI
 import com.example.petencyclopedia.ui.data_class.Height
 import com.example.petencyclopedia.ui.data_class.Image
 import com.example.petencyclopedia.ui.data_class.Weight
+import kotlinx.android.synthetic.main.fragment_dog_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,6 +50,7 @@ class DogDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         /*homeViewModel =
             ViewModelProvider(this).get(DogViewModel::class.java)*/
 
@@ -71,11 +73,21 @@ class DogDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view,savedInstanceState)
-        val name_doggo = arguments?.getString("name")
+        //val name_doggo = arguments?.getString("name")
+        val name_doggo = "Airedale"
         button_return = view.findViewById(R.id.doggo_detail_button_return)
         button_return.setOnClickListener {
             findNavController().navigate(R.id.navigation_to_dog)
         }
+
+        doggo_name = view.findViewById(R.id.doggo_detail_name)
+        doggo_height = view.findViewById(R.id.doggo_detail_height)
+        doggo_temperament = view.findViewById(R.id.doggo_detail_temperament)
+        doggo_origin = view.findViewById(R.id.doggo_detail_origin)
+        doggo_life_span = view.findViewById(R.id.doggo_detail_life_span)
+        doggo_weight = view.findViewById(R.id.doggo_detail_weigth)
+        doggo_breed = view.findViewById(R.id.doggo_detail_breed)
+
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.thedogapi.com/v1/")
             .addConverterFactory(GsonConverterFactory.create())
