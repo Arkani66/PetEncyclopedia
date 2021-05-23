@@ -41,10 +41,10 @@
         <action
             android:id="@+id/navigation_to_dog"
             app:destination="@+id/navigation_dog">
-            <!--<argument
+            <argument
                     android:name="id_doggo"
-                    app:argType="String"
-                    android:defaultValue="@null" />-->
+                    app:argType="integer"
+                    android:defaultValue="0" />
         </action>
     </fragment>
 

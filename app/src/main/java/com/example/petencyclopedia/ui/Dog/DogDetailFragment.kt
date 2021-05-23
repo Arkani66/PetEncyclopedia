@@ -6,13 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.petencyclopedia.R
 import com.example.petencyclopedia.databinding.FragmentDogDetailBinding
 import com.example.petencyclopedia.ui.Dog.dogAPI.Dog
 import com.example.petencyclopedia.ui.Dog.dogAPI.DogAPI
+import com.example.petencyclopedia.ui.Dog.dogAPI.DoggoAdaptater
 import com.example.petencyclopedia.ui.data_class.Height
 import com.example.petencyclopedia.ui.data_class.Image
 import com.example.petencyclopedia.ui.data_class.Weight
@@ -39,8 +44,11 @@ class DogDetailFragment : Fragment() {
     private lateinit var doggo_life_span: TextView
     private lateinit var doggo_temperament: TextView
     private lateinit var doggo_origin: TextView
+    private lateinit var doggo_image: ImageView
 
-
+    private val mdogViewModel : DogViewModel by activityViewModels()
+    private val madapterView = DoggoAdaptater(listOf())
+    private lateinit var doggo: Dog
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -73,8 +81,9 @@ class DogDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view,savedInstanceState)
-        //val name_doggo = arguments?.getString("name")
+        val id_doggo = arguments?.getInt("id_doggo")?: 0
         val name_doggo = "Airedale"
+        var final_name_doggo = "q=$name_doggo"
         button_return = view.findViewById(R.id.doggo_detail_button_return)
         button_return.setOnClickListener {
             findNavController().navigate(R.id.navigation_to_dog)
@@ -87,35 +96,32 @@ class DogDetailFragment : Fragment() {
         doggo_life_span = view.findViewById(R.id.doggo_detail_life_span)
         doggo_weight = view.findViewById(R.id.doggo_detail_weigth)
         doggo_breed = view.findViewById(R.id.doggo_detail_breed)
+        doggo_image = view.findViewById(R.id.doggo_detail_image)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.thedogapi.com/v1/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val mdoggoApi: DogAPI = retrofit.create(DogAPI::class.java)
-
-        mdoggoApi.getDoggo("api_key=5884f3ba-9b04-4b9c-acbd-7bebfbee73fa",name_doggo).enqueue(object : Callback<Dog> {
-            override fun onFailure(call: Call<Dog>, t: Throwable) {
-                doggo_name.text = "Hasn't worked out"
-            }
-
-            override fun onResponse(
-                call: Call<Dog>,
-                response: Response<Dog>
-            ) {
-                if(response.isSuccessful && response.body()!=null){
-                    val mdoggoResponse : Dog = response.body()!!
-                    doggo_name.text = mdoggoResponse.name
-                    doggo_breed.text = mdoggoResponse.breed_group
-                    doggo_weight.text = mdoggoResponse.weight.metric
-                    doggo_height.text = mdoggoResponse.height.metric
-                    doggo_life_span.text = mdoggoResponse.life_span
-                    doggo_origin.text = mdoggoResponse.origin
-                    doggo_temperament.text = mdoggoResponse.temperament
-                }
-            }
+        mdogViewModel.doggoList.observe(viewLifecycleOwner, Observer {list ->
         })
+        doggo = Dog(Weight("inconnu","inconnu"),Height("inconnu","inconnu"),0,"inconnu","inconnu","inconnu","inconnu","inconnu","inconnu","inconnu",Image("inconnu",0,0,"inconnu"))
+        doggo = mdogViewModel.getSingleDog(id_doggo)
+
+        if(doggo!= null){
+            doggo_name.text = doggo.name
+            doggo_breed.text = "Espèce : "+ doggo.breed_group
+            doggo_weight.text = "Poids : " + doggo.weight.metric
+            doggo_height.text = "Taille : " + doggo.height.metric
+            doggo_life_span.text = "Espérance de vie : " + doggo.life_span
+            doggo_origin.text = "Origine : " + doggo.origin
+            doggo_temperament.text = "Temperament : " + doggo.temperament
+
+            val image_url = "https://cdn2.thedogapi.com/images/"+doggo.reference_image_id+".jpg"
+            Glide.with(this)
+                .load(image_url)
+                .centerCrop()
+                .into(doggo_image)
+        }
+        else{
+            doggo_name.text = "doggo is null !"
+        }
+
     }
 
 
@@ -138,6 +144,7 @@ class DogDetailFragment : Fragment() {
                 }
             }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

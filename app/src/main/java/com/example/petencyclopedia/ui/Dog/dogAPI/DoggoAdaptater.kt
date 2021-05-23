@@ -3,9 +3,12 @@ package com.example.petencyclopedia.ui.Dog.dogAPI
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.petencyclopedia.R
+import com.example.petencyclopedia.ui.api.PetApplication.Companion.context
 
 /**
  *Created by $(USER) on $(DATE).
@@ -17,13 +20,14 @@ class DoggoAdaptater(private var dataSet : List<Dog>, var listener: ((Dog) -> Un
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView : TextView = view.findViewById(R.id.doggo_name)
-
+        val textView : TextView
+        val imagedog : ImageView
         init {
             //Define clickListener for the ViewHolder's View
             /*textView.setOnClickListener(){
-
            }*/
+            textView = view.findViewById(R.id.doggo_name)
+            imagedog = view.findViewById(R.id.doggo_item_image)
         }
     }
 
@@ -48,6 +52,10 @@ class DoggoAdaptater(private var dataSet : List<Dog>, var listener: ((Dog) -> Un
         viewHolder.itemView.setOnClickListener{
             listener?.invoke(dog)
         }
+        Glide.with(viewHolder.itemView.context)
+            .load(dog.image.url)
+            .centerCrop()
+            .into(viewHolder.imagedog)
     }
 
     override fun getItemCount() = dataSet.size

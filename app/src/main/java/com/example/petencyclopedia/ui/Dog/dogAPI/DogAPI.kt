@@ -11,8 +11,8 @@ import retrofit2.http.Query
 interface DogAPI {
     //@Headers("api_key=5884f3ba-9b04-4b9c-acbd-7bebfbee73fa")
     @GET("breeds")
-    fun getDoggoList(@Query("api_key")  api_key : String): Call<List<Dog>>
+    fun getDoggoList(): Call<List<Dog>>
 
     @GET("breeds/search")
-    fun getDoggo(@Query("api_key")  api_key : String, @Query("q") q : String?): Call<Dog>
+    fun getDoggo(@Query("q") q : String): Call<Dog>
 }

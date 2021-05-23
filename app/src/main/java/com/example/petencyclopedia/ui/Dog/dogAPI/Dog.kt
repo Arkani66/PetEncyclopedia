@@ -16,8 +16,6 @@ data class Dog(
     var breed_group : String,
     var life_span : String,
     var temperament : String,
-    //var alt_names : String,
-    //var wikipedia_url : String,
     var origin : String,
     var reference_image_id : String,
     var image : Image

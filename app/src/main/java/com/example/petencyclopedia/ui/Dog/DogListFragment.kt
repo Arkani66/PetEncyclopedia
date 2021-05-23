@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +16,7 @@ import com.example.petencyclopedia.R
 import com.example.petencyclopedia.databinding.FragmentDoglistBinding
 import com.example.petencyclopedia.ui.Dog.dogAPI.Dog
 import com.example.petencyclopedia.ui.Dog.dogAPI.DoggoAdaptater
-import com.example.petencyclopedia.ui.api.Singleton
+import com.example.petencyclopedia.ui.api.Singletons
 import com.example.petencyclopedia.ui.data_class.Height
 import com.example.petencyclopedia.ui.data_class.Image
 import com.example.petencyclopedia.ui.data_class.Weight
@@ -28,6 +31,8 @@ class DogListFragment : Fragment() {
     private lateinit var mrecyclerview : RecyclerView
     private val madapterView = DoggoAdaptater(listOf(), ::onClickedDoggo)
     private val mlayoutmanager = LinearLayoutManager(context)
+
+    private val mdogViewModel : DogViewModel by activityViewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -58,38 +63,23 @@ class DogListFragment : Fragment() {
             layoutManager = this@DogListFragment.mlayoutmanager
             adapter = this@DogListFragment.madapterView
         }
-
-        Singleton.mdoggoApi.getDoggoList("api_key=5884f3ba-9b04-4b9c-acbd-7bebfbee73fa").enqueue(object : Callback<List<Dog>> {
-            override fun onFailure(call: Call<List<Dog>>, t: Throwable) {
-                val mdoggoResponse : ArrayList<Dog> = arrayListOf<Dog>().apply {
-                    add(Dog(Weight("6 - 13","3 - 6"), Height("9 - 11.5","23 - 29"),1,"Hasn't work out","default","default","default","default","default","default",
-                        Image("BJa4kxc4X",1600,1199,"https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg")
-                    ))
-                }
-                madapterView.updateList(mdoggoResponse)
-            }
-
-            override fun onResponse(
-                call: Call<List<Dog>>,
-                response: Response<List<Dog>>
-            ) {
-                if(response.isSuccessful && response.body()!=null){
-                    val mdoggoResponse : List<Dog> = response.body()!!
-                    madapterView.updateList(mdoggoResponse)
-                }
-            }
+        mdogViewModel.doggoList.observe(viewLifecycleOwner, Observer {list ->
+            madapterView.updateList(list)
         })
-
     }
 
-    private fun onClickedDoggo(dog: Dog) {
+        private fun onClickedDoggo(dog: Dog) {
         /*val name_doggo = dog.name
         val bundle = Bundle()
         bundle.putString("name", name_doggo)
         val fragment = Fragment()
         fragment.setArguments(bundle)
         findNavController().navigate(R.id.navigation_to_dogdetail, bundle)*/
-        findNavController().navigate(R.id.navigation_to_dogdetail)
+        val id_name = dog.id
+        val action =
+        findNavController().navigate(R.id.navigation_to_dogdetail, bundleOf(
+            "id_doggo" to dog.id
+        ))
     }
 
    /* private fun onClickedPokemon(pokemon: Pokemon) {
