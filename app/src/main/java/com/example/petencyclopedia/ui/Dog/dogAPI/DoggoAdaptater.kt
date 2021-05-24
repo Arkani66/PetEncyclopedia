@@ -53,10 +53,18 @@ class DoggoAdaptater(private var dataSet : List<Dog>, var listener: ((Dog) -> Un
         viewHolder.itemView.setOnClickListener{
             listener?.invoke(dog)
         }
-        Glide.with(viewHolder.itemView.context)
-            .load(dog.image.url)
-            .centerCrop()
-            .into(viewHolder.imagedog)
+        if(dog.image.url != null){
+            Glide.with(viewHolder.itemView.context)
+                .load(dog.image.url)
+                .centerCrop()
+                .into(viewHolder.imagedog)
+        }else {
+            Glide.with(viewHolder.itemView.context)
+                .load(R.drawable.default_dog)
+                .centerCrop()
+                .into(viewHolder.imagedog)
+        }
+
     }
 
     override fun getItemCount() = dataSet.size

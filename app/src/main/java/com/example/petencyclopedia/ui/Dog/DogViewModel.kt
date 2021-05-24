@@ -27,10 +27,7 @@ class DogViewModel : ViewModel() {
             Callback<List<Dog>> {
             override fun onFailure(call: Call<List<Dog>>, t: Throwable) {
                 val mdoggoResponse : ArrayList<Dog> = arrayListOf<Dog>().apply {
-                    add(Dog(
-                        Weight("6 - 13","3 - 6"), Height("9 - 11.5","23 - 29"),1,"Hasn't work out","default","default","default","default","default","default",
-                        Image("BJa4kxc4X",1600,1199,"https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg")
-                    ))
+
                 }
                 doggoList.value = DogFailure
             }

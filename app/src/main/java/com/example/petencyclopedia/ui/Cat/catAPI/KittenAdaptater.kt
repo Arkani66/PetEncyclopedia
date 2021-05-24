@@ -3,8 +3,10 @@ package com.example.petencyclopedia.ui.Cat.catAPI
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.petencyclopedia.R
 
 class KittenAdaptater(private var dataSet : List<Cat>, var listener: ((Cat) -> Unit)? = null) : RecyclerView.Adapter<KittenAdaptater.ViewHolder>() {
@@ -13,12 +15,13 @@ class KittenAdaptater(private var dataSet : List<Cat>, var listener: ((Cat) -> U
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView : TextView = view.findViewById(R.id.cat_name)
+        val textView : TextView
+        val imagecat: ImageView
         init {
             //Define clickListener for the ViewHolder's View
-            /*textView.setOnClickListener(){
+            textView = view.findViewById(R.id.cat_name)
+            imagecat = view.findViewById(R.id.cat_item_image)
 
-            }*/
         }
     }
 
@@ -43,6 +46,18 @@ class KittenAdaptater(private var dataSet : List<Cat>, var listener: ((Cat) -> U
         viewHolder.itemView.setOnClickListener{
             listener?.invoke(cat)
         }
+        if(cat.image != null){
+            Glide.with(viewHolder.itemView.context)
+                .load(cat.image.url)
+                .centerCrop()
+                .into(viewHolder.imagecat)
+        }else {
+            Glide.with(viewHolder.itemView.context)
+                .load(R.drawable.default_cat)
+                .centerCrop()
+                .into(viewHolder.imagecat)
+        }
+
     }
 
     override fun getItemCount() = dataSet.size

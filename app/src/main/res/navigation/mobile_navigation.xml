@@ -20,7 +20,7 @@
             android:label="@string/title_catlist"
             tools:layout="@layout/fragment_catlist" >
         <action
-            android:id="@+id/navigation_to_cat"
+            android:id="@+id/navigation_to_catdetails"
             app:destination="@+id/navigation_catdetails"/>
     </fragment>
 
@@ -31,7 +31,7 @@
             tools:layout="@layout/fragment_notifications" >
         <action
             android:id="@+id/navigation_to_notifications"
-            app:destination="@+id/navigation_dogdetails"/>
+            app:destination="@+id/navigation_notifications"/>
     </fragment>
     <fragment
             android:id="@+id/navigation_dogdetails"
@@ -45,6 +45,20 @@
                     android:name="id_doggo"
                     app:argType="integer"
                     android:defaultValue="0" />
+        </action>
+    </fragment>
+    <fragment
+            android:id="@+id/navigation_catdetails"
+            android:name="com.example.petencyclopedia.ui.Cat.CatDetailFragment"
+            android:label="@string/title_catdetail"
+            tools:layout="@layout/fragment_cat_detail" >
+        <action
+                android:id="@+id/navigation_to_cat"
+                app:destination="@+id/navigation_cat">
+           <!-- <argument
+                    android:name="id_doggo"
+                    app:argType="integer"
+                    android:defaultValue="0" />-->
         </action>
     </fragment>
 

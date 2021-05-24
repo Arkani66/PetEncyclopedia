@@ -61,16 +61,9 @@ class DogDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        /*homeViewModel =
-            ViewModelProvider(this).get(DogViewModel::class.java)*/
-
         _binding = FragmentDogDetailBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        /*val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })*/
         return root
     }
     /*override fun onCreateView(

@@ -7,10 +7,11 @@
     <string name="title_catlist">Cat</string>
     <string name="title_dogdetail">Dog Detail</string>
     <string name="button_return_dog">Retourner voir les catégories de chiens</string>
+    <string name="button_return_cat">Retourner voir les catégories de chats</string>
     <string name="title_catdetail">Cat Detail</string>
     <string name="title_notifications">Notifications</string>
     <string name="Dogliste_title">Here are the different dogs races !Click on it to see the informations</string>
-    <string name="Catliste_title">Voici les différentes catégories de Chats</string>
+    <string name="Catliste_title">Here are the different dogs races !Click on it to see the informations</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error">An error has occured ! Please retry later</string>

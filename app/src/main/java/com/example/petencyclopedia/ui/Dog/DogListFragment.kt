@@ -83,7 +83,6 @@ class DogListFragment : Fragment() {
         fragment.setArguments(bundle)
         findNavController().navigate(R.id.navigation_to_dogdetail, bundle)*/
         val id_name = dog.id
-        val action =
         findNavController().navigate(R.id.navigation_to_dogdetail, bundleOf(
             "id_doggo" to dog.id
         ))
