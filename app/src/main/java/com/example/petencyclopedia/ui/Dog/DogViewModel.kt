@@ -14,13 +14,15 @@ import retrofit2.Response
 
 class DogViewModel : ViewModel() {
 
-    val doggoList : MutableLiveData<List<Dog>> = MutableLiveData()
+    val doggoList : MutableLiveData<DogModel> = MutableLiveData()
+    val doggoList_dog : MutableLiveData<List<Dog>> = MutableLiveData()
 
     init {
         callAPIDoggo()
     }
 
     private fun callAPIDoggo(){
+        doggoList.value = DogLoader
         Singletons.mdoggoApi.getDoggoList().enqueue(object :
             Callback<List<Dog>> {
             override fun onFailure(call: Call<List<Dog>>, t: Throwable) {
@@ -30,7 +32,7 @@ class DogViewModel : ViewModel() {
                         Image("BJa4kxc4X",1600,1199,"https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg")
                     ))
                 }
-                doggoList.value = mdoggoResponse
+                doggoList.value = DogFailure
             }
 
             override fun onResponse(
@@ -39,16 +41,21 @@ class DogViewModel : ViewModel() {
             ) {
                 if(response.isSuccessful && response.body()!=null){
                     val mdoggoResponse : List<Dog> = response.body()!!
-                    doggoList.value = mdoggoResponse
+                    doggoList.value = DogSuccess(mdoggoResponse)
+                    doggoList_dog.value = mdoggoResponse
                 }
+                else
+                    doggoList.value = DogFailure
             }
         })
     }
 
+
     fun getSingleDog(id : Int) : Dog{
         val doggo : Dog
-        if(id!=0) doggo = doggoList.value!![id-1]
-        else doggo = doggoList.value!![id]
+        if(id!=0) doggo = doggoList_dog.value!![id-1]
+        else doggo = doggoList_dog.value!![id]
         return doggo
     }
+
 }

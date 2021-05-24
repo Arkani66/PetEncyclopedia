@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -98,7 +100,7 @@ class DogDetailFragment : Fragment() {
         doggo_breed = view.findViewById(R.id.doggo_detail_breed)
         doggo_image = view.findViewById(R.id.doggo_detail_image)
 
-        mdogViewModel.doggoList.observe(viewLifecycleOwner, Observer {list ->
+        mdogViewModel.doggoList.observe(viewLifecycleOwner, Observer {mdogModel ->
         })
         doggo = Dog(Weight("inconnu","inconnu"),Height("inconnu","inconnu"),0,"inconnu","inconnu","inconnu","inconnu","inconnu","inconnu","inconnu",Image("inconnu",0,0,"inconnu"))
         doggo = mdogViewModel.getSingleDog(id_doggo)
@@ -144,7 +146,6 @@ class DogDetailFragment : Fragment() {
                 }
             }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

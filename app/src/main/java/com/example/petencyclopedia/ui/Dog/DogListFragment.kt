@@ -4,7 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.core.os.bundleOf
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -31,7 +35,8 @@ class DogListFragment : Fragment() {
     private lateinit var mrecyclerview : RecyclerView
     private val madapterView = DoggoAdaptater(listOf(), ::onClickedDoggo)
     private val mlayoutmanager = LinearLayoutManager(context)
-
+    private lateinit var mloader : ProgressBar
+    private lateinit var mtexterror: TextView
     private val mdogViewModel : DogViewModel by activityViewModels()
 
     // This property is only valid between onCreateView and
@@ -43,16 +48,11 @@ class DogListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        /*homeViewModel =
-            ViewModelProvider(this).get(DogViewModel::class.java)*/
+
 
         _binding = FragmentDoglistBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        /*val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })*/
         return root
     }
 
@@ -63,8 +63,15 @@ class DogListFragment : Fragment() {
             layoutManager = this@DogListFragment.mlayoutmanager
             adapter = this@DogListFragment.madapterView
         }
-        mdogViewModel.doggoList.observe(viewLifecycleOwner, Observer {list ->
-            madapterView.updateList(list)
+        mloader = view.findViewById(R.id.doggo_list_loader)
+        mtexterror = view.findViewById(R.id.doggo_list_text_error)
+
+        mdogViewModel.doggoList.observe(viewLifecycleOwner, Observer {mdogModel ->
+            mloader.isVisible = mdogModel is DogLoader
+            mtexterror.isVisible = mdogModel is DogFailure
+            if(mdogModel is DogSuccess) madapterView.updateList(mdogModel.doggolist)
+            else mrecyclerview.isInvisible
+
         })
     }
 
