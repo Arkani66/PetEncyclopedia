@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -124,10 +125,12 @@ class CatListFragment : Fragment() {
     private fun onClickedCat(cat: Cat) {
         val name_kitten = cat.name
         val bundle = Bundle()
-        bundle.putString("name", name_kitten)
+        bundle.putString("name_kitten", name_kitten)
         val fragment = Fragment()
         fragment.setArguments(bundle)
-        findNavController().navigate(R.id.navigation_to_catdetails)
+        findNavController().navigate(R.id.navigation_to_catdetails,bundleOf(
+            "name_kitten" to cat.id
+        ))
     }
 
     override fun onDestroyView() {

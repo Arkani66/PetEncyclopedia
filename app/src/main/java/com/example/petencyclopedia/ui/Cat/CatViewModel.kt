@@ -52,10 +52,11 @@ class CatViewModel : ViewModel(){
 
     }
 
-    fun getSingleCat(id : Int) : Cat {
-        val kitten : Cat
-        if(id!=0) kitten = catList_cat.value!![id-1]
-        else kitten = catList_cat.value!![id]
+    fun getSingleCat(id : String) : Cat {
+        var kitten : Cat = catList_cat.value!![0]
+        catList_cat.value?.forEach(){
+            if( it.id.equals(id)) kitten = it
+        }
         return kitten
     }
 }

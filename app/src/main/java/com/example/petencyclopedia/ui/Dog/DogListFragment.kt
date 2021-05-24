@@ -84,7 +84,7 @@ class DogListFragment : Fragment() {
         findNavController().navigate(R.id.navigation_to_dogdetail, bundle)*/
         val id_name = dog.id
         findNavController().navigate(R.id.navigation_to_dogdetail, bundleOf(
-            "id_doggo" to dog.id
+            "id_doggo" to dog.id, "name_doggo" to dog.name
         ))
     }
 

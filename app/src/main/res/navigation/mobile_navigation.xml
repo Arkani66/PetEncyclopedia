@@ -45,6 +45,10 @@
                     android:name="id_doggo"
                     app:argType="integer"
                     android:defaultValue="0" />
+            <argument
+                    android:name="name_doggo"
+                    app:argType="string"
+                    android:defaultValue="null" />
         </action>
     </fragment>
     <fragment
@@ -55,10 +59,10 @@
         <action
                 android:id="@+id/navigation_to_cat"
                 app:destination="@+id/navigation_cat">
-           <!-- <argument
-                    android:name="id_doggo"
-                    app:argType="integer"
-                    android:defaultValue="0" />-->
+           <argument
+                    android:name="name_kitten"
+                    app:argType="string"
+                    android:defaultValue="null" />
         </action>
     </fragment>
 

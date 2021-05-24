@@ -77,7 +77,7 @@ class DogDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view,savedInstanceState)
         val id_doggo = arguments?.getInt("id_doggo")?: 0
-        val name_doggo = "Airedale"
+        val name_doggo = arguments?.getString("name_doggo")?: "Airedale"
         var final_name_doggo = "q=$name_doggo"
         button_return = view.findViewById(R.id.doggo_detail_button_return)
         button_return.setOnClickListener {

@@ -77,7 +77,7 @@ class CatDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //val id_kitten = arguments?.getInt("id_kitten")?: 0
+        val id_kitten = arguments?.getString("name_kitten")?: "abys"
 
         button_return = view.findViewById(R.id.kitten_detail_button_return)
         button_return.setOnClickListener {
@@ -93,31 +93,29 @@ class CatDetailFragment : Fragment() {
         kitten_breed = view.findViewById(R.id.kitten_detail_breed)
         kitten_image = view.findViewById(R.id.kitten_detail_image)
 
-        /*mcatViewModel.catList.observe(viewLifecycleOwner, Observer {mcatModel ->
+        kitten_name.text = id_kitten
+        mcatViewModel.catlist.observe(viewLifecycleOwner, Observer {mcatModel ->
         })
         kitten = Cat(Weight("inconnu","inconnu"),"inconnu","inconnu","inconnu","inconnu","inconnu","inconnu","inconnu",0,"inconnu",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"inconnu","inconnu",
             Image("inconnu",0,0,"inconnu")
         )
-        kitten = mcatViewModel.getSingleCat(id_kitten)*/
+        kitten = mcatViewModel.getSingleCat(id_kitten)
 
-        /*if(kitten!= null){
+        if(kitten!= null) {
             kitten_name.text = kitten.name
-            kitten_breed.text = "Espèce : "
-            kitten_weight.text = "Poids : " + kitten.weight.metric
-            kitten_height.text = "Taille : "
             kitten_life_span.text = "Espérance de vie : " + kitten.life_span
             kitten_origin.text = "Origine : " + kitten.origin
             kitten_temperament.text = "Temperament : " + kitten.temperament
-
-           /* val image_url = "https://cdn2.thedogapi.com/images/"+kitten.reference_image_id+".jpg"
+            val image_url = "https://cdn2.thedogapi.com/images/"+kitten.reference_image_id+".jpg"
             Glide.with(this)
-                .load(image_url)
+                .load(kitten.image.url)
                 .centerCrop()
-                .into(kitten_image)*/
+                .into(kitten_image)
         }
         else{
             kitten_name.text = "kitten is null !"
-        }*/
+        }
+
     }
 
     companion object {
