@@ -44,7 +44,6 @@ class CatDetailFragment : Fragment() {
 
     private lateinit var button_return: Button
     private lateinit var kitten_name: TextView
-    private lateinit var kitten_breed: TextView
     private lateinit var kitten_height: TextView
     private lateinit var kitten_weight: TextView
     private lateinit var kitten_life_span: TextView
@@ -95,7 +94,6 @@ class CatDetailFragment : Fragment() {
         kitten_origin = view.findViewById(R.id.kitten_detail_origin)
         kitten_life_span = view.findViewById(R.id.kitten_detail_life_span)
         kitten_weight = view.findViewById(R.id.kitten_detail_weigth)
-        kitten_breed = view.findViewById(R.id.kitten_detail_breed)
         kitten_image = view.findViewById(R.id.kitten_detail_image)
 
         kitten_indoor_image = view.findViewById(R.id.kitten_detail_indoor_bar)
