@@ -88,10 +88,6 @@ class DogListFragment : Fragment() {
         ))
     }
 
-   /* private fun onClickedPokemon(pokemon: Pokemon) {
-        findNavController().navigate(R.id.navigation_cat)
-    }*/
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

@@ -59,4 +59,10 @@ class CatViewModel : ViewModel(){
         }
         return kitten
     }
+
+    fun GetimageIndoor(kitten : Cat):String {
+        lateinit var address : String
+        address = "catbar"+kitten.indoor.toString()
+        return address
+    }
 }

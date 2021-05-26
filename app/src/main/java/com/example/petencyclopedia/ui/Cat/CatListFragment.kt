@@ -104,7 +104,7 @@ class CatListFragment : Fragment() {
             override fun onFailure(call: Call<List<Cat>>, t: Throwable) {
                 val mkittenresponse : ArrayList<Cat> = arrayListOf<Cat>().apply {
                     add(
-                        Cat(Weight("inconnu","inconnu"),"inconnu","inconnu","inconnu","inconnu","inconnu","inconnu","inconnu",0,"inconnu",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"inconnu","inconnu",
+                        Cat(Weight("inconnu","inconnu"),"inconnu","inconnu","inconnu","inconnu","inconnu","inconnu","inconnu",0,0,"inconnu",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"inconnu","inconnu",
                             Image("inconnu",0,0,"inconnu")))
                 }
                 madapterView.updateList(mkittenresponse)

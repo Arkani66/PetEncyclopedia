@@ -55,4 +55,12 @@ class DogViewModel : ViewModel() {
         return doggo
     }
 
+    fun getSingleDogFromName(name : String) : Dog{
+        var doggo: Dog= doggoList_dog.value!![0]
+        doggoList_dog.value?.forEach(){
+            if( it.name.equals(name)) doggo = it
+        }
+        return doggo
+    }
+
 }

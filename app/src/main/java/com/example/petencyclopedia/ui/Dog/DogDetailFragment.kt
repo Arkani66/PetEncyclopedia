@@ -78,7 +78,6 @@ class DogDetailFragment : Fragment() {
         super.onViewCreated(view,savedInstanceState)
         val id_doggo = arguments?.getInt("id_doggo")?: 0
         val name_doggo = arguments?.getString("name_doggo")?: "Airedale"
-        var final_name_doggo = "q=$name_doggo"
         button_return = view.findViewById(R.id.doggo_detail_button_return)
         button_return.setOnClickListener {
             findNavController().navigate(R.id.navigation_to_dog)
@@ -96,7 +95,8 @@ class DogDetailFragment : Fragment() {
         mdogViewModel.doggoList.observe(viewLifecycleOwner, Observer {mdogModel ->
         })
         doggo = Dog(Weight("inconnu","inconnu"),Height("inconnu","inconnu"),0,"inconnu","inconnu","inconnu","inconnu","inconnu","inconnu","inconnu",Image("inconnu",0,0,"inconnu"))
-        doggo = mdogViewModel.getSingleDog(id_doggo)
+        //7doggo = mdogViewModel.getSingleDog(id_doggo)
+        doggo = mdogViewModel.getSingleDogFromName(name_doggo)
 
         if(doggo!= null){
             doggo_name.text = doggo.name

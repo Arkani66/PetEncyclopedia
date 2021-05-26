@@ -51,6 +51,11 @@ class CatDetailFragment : Fragment() {
     private lateinit var kitten_temperament: TextView
     private lateinit var kitten_origin: TextView
     private lateinit var kitten_image: ImageView
+    private lateinit var kitten_indoor_image: ImageView
+    private lateinit var kitten_affection_image: ImageView
+    private lateinit var kitten_energy_image: ImageView
+    private lateinit var kitten_dog_image: ImageView
+    private lateinit var kitten_vocalisation_image: ImageView
 
     private val mcatViewModel : CatViewModel by activityViewModels()
     private val madapterView = KittenAdaptater(listOf())
@@ -93,24 +98,36 @@ class CatDetailFragment : Fragment() {
         kitten_breed = view.findViewById(R.id.kitten_detail_breed)
         kitten_image = view.findViewById(R.id.kitten_detail_image)
 
+        kitten_indoor_image = view.findViewById(R.id.kitten_detail_indoor_bar)
+        kitten_affection_image = view.findViewById(R.id.kitten_detail_affection_bar)
+        kitten_energy_image = view.findViewById(R.id.kitten_detail_dog_bar)
+        kitten_dog_image = view.findViewById(R.id.kitten_detail_dog_bar)
+        kitten_vocalisation_image = view.findViewById(R.id.kitten_detail_vocalisation_bar)
+
         kitten_name.text = id_kitten
         mcatViewModel.catlist.observe(viewLifecycleOwner, Observer {mcatModel ->
         })
-        kitten = Cat(Weight("inconnu","inconnu"),"inconnu","inconnu","inconnu","inconnu","inconnu","inconnu","inconnu",0,"inconnu",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"inconnu","inconnu",
+        kitten = Cat(Weight("inconnu","inconnu"),"inconnu","inconnu","inconnu","inconnu","inconnu","inconnu","inconnu",0,0,"inconnu",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"inconnu","inconnu",
             Image("inconnu",0,0,"inconnu")
         )
         kitten = mcatViewModel.getSingleCat(id_kitten)
 
         if(kitten!= null) {
             kitten_name.text = kitten.name
+            kitten_origin.text = kitten.description
             kitten_life_span.text = "Espérance de vie : " + kitten.life_span
-            kitten_origin.text = "Origine : " + kitten.origin
+            kitten_height.text = "Origine : " + kitten.origin
             kitten_temperament.text = "Temperament : " + kitten.temperament
-            val image_url = "https://cdn2.thedogapi.com/images/"+kitten.reference_image_id+".jpg"
+            kitten_weight.text = "Weight : " + kitten.weight.metric
             Glide.with(this)
                 .load(kitten.image.url)
                 .centerCrop()
                 .into(kitten_image)
+            printingAffection()
+            printingDogFriendly()
+            printingGrooming()
+            printingIndoor()
+            printingVocalisation()
         }
         else{
             kitten_name.text = "kitten is null !"
@@ -136,5 +153,204 @@ class CatDetailFragment : Fragment() {
                 //    putString(ARG_PARAM2, param2)
                 //}
             }
+    }
+    fun printingAffection(){
+        //affection
+        if(kitten.affection_level == 0){
+            Glide.with(this)
+                .load(R.drawable.catbar0)
+                .centerCrop()
+                .into(kitten_affection_image)
+        }
+        else if(kitten.affection_level == 1){
+            Glide.with(this)
+                .load(R.drawable.catbar1)
+                .centerCrop()
+                .into(kitten_affection_image)
+        }
+        else if(kitten.affection_level == 2){
+            Glide.with(this)
+                .load(R.drawable.catbar2)
+                .centerCrop()
+                .into(kitten_affection_image)
+        }
+        else if(kitten.affection_level == 3){
+            Glide.with(this)
+                .load(R.drawable.catbar3)
+                .centerCrop()
+                .into(kitten_affection_image)
+        }
+        else if(kitten.affection_level == 4){
+            Glide.with(this)
+                .load(R.drawable.catbar4)
+                .centerCrop()
+                .into(kitten_affection_image)
+        }
+        else {
+            Glide.with(this)
+                .load(R.drawable.catbar5)
+                .centerCrop()
+                .into(kitten_affection_image)
+        }
+    }
+
+    fun printingIndoor(){
+        //affection
+        if(kitten.indoor == 0){
+            Glide.with(this)
+                .load(R.drawable.catbar0)
+                .centerCrop()
+                .into(kitten_indoor_image)
+        }
+        else if(kitten.indoor == 1){
+            Glide.with(this)
+                .load(R.drawable.catbar1)
+                .centerCrop()
+                .into(kitten_indoor_image)
+        }
+        else if(kitten.indoor == 2){
+            Glide.with(this)
+                .load(R.drawable.catbar2)
+                .centerCrop()
+                .into(kitten_indoor_image)
+        }
+        else if(kitten.indoor == 3){
+            Glide.with(this)
+                .load(R.drawable.catbar3)
+                .centerCrop()
+                .into(kitten_indoor_image)
+        }
+        else if(kitten.indoor == 4){
+            Glide.with(this)
+                .load(R.drawable.catbar4)
+                .centerCrop()
+                .into(kitten_indoor_image)
+        }
+        else {
+            Glide.with(this)
+                .load(R.drawable.catbar5)
+                .centerCrop()
+                .into(kitten_indoor_image)
+        }
+    }
+
+    fun printingGrooming(){
+        //grooming
+        if(kitten.grooming == 0){
+            Glide.with(this)
+                .load(R.drawable.catbar0)
+                .centerCrop()
+                .into(kitten_energy_image)
+        }
+        else if(kitten.grooming == 1){
+            Glide.with(this)
+                .load(R.drawable.catbar1)
+                .centerCrop()
+                .into(kitten_energy_image)
+        }
+        else if(kitten.grooming == 2){
+            Glide.with(this)
+                .load(R.drawable.catbar2)
+                .centerCrop()
+                .into(kitten_energy_image)
+        }
+        else if(kitten.grooming == 3){
+            Glide.with(this)
+                .load(R.drawable.catbar3)
+                .centerCrop()
+                .into(kitten_energy_image)
+        }
+        else if(kitten.grooming == 4){
+            Glide.with(this)
+                .load(R.drawable.catbar4)
+                .centerCrop()
+                .into(kitten_energy_image)
+        }
+        else {
+            Glide.with(this)
+                .load(R.drawable.catbar5)
+                .centerCrop()
+                .into(kitten_energy_image)
+        }
+    }
+
+    fun printingDogFriendly(){
+        //Dog Friendly
+        if(kitten.dog_friendly == 0){
+            Glide.with(this)
+                .load(R.drawable.catbar0)
+                .centerCrop()
+                .into(kitten_dog_image)
+        }
+        else if(kitten.dog_friendly == 1){
+            Glide.with(this)
+                .load(R.drawable.catbar1)
+                .centerCrop()
+                .into(kitten_dog_image)
+        }
+        else if(kitten.dog_friendly == 2){
+            Glide.with(this)
+                .load(R.drawable.catbar2)
+                .centerCrop()
+                .into(kitten_dog_image)
+        }
+        else if(kitten.dog_friendly == 3){
+            Glide.with(this)
+                .load(R.drawable.catbar3)
+                .centerCrop()
+                .into(kitten_dog_image)
+        }
+        else if(kitten.dog_friendly == 4){
+            Glide.with(this)
+                .load(R.drawable.catbar4)
+                .centerCrop()
+                .into(kitten_dog_image)
+        }
+        else {
+            Glide.with(this)
+                .load(R.drawable.catbar5)
+                .centerCrop()
+                .into(kitten_dog_image)
+        }
+    }
+
+    fun printingVocalisation(){
+        //vocalisation
+        if(kitten.vocalisation == 0){
+            Glide.with(this)
+                .load(R.drawable.catbar0)
+                .centerCrop()
+                .into(kitten_vocalisation_image)
+        }
+        else if(kitten.vocalisation == 1){
+            Glide.with(this)
+                .load(R.drawable.catbar1)
+                .centerCrop()
+                .into(kitten_vocalisation_image)
+        }
+        else if(kitten.vocalisation == 2){
+            Glide.with(this)
+                .load(R.drawable.catbar2)
+                .centerCrop()
+                .into(kitten_vocalisation_image)
+        }
+        else if(kitten.vocalisation == 3){
+            Glide.with(this)
+                .load(R.drawable.catbar3)
+                .centerCrop()
+                .into(kitten_vocalisation_image)
+        }
+        else if(kitten.vocalisation == 4){
+            Glide.with(this)
+                .load(R.drawable.catbar4)
+                .centerCrop()
+                .into(kitten_vocalisation_image)
+        }
+        else {
+            Glide.with(this)
+                .load(R.drawable.catbar5)
+                .centerCrop()
+                .into(kitten_vocalisation_image)
+        }
     }
 }

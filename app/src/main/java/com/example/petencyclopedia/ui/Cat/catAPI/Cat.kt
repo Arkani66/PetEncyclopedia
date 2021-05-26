@@ -16,6 +16,7 @@ data class Cat(
     var country_code : String,
     var description: String,
     var life_span : String,
+    var indoor: Int,
     var lap: Int,
     var alt_names : String,
     var experimental : Int,
