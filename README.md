@@ -27,7 +27,8 @@ Une fois entrez dans PetEncyclopedia, vous devez choisir quelle catégorie vous 
 Si vous cliquez sur la catégorie Chien vous arriverez sur cette page, qui liste toutes les espèces de chiens répertoriées ainsi qu'une image d'elle:
 <img width="360px" height="667px" src="https://github.com/Arkani66/PetEncyclopedia/blob/master/images/Screenshot_2021-05-28-20-36-18.png">
 
-De même si vous cliquez sur la catégorie Chat:.
+De même si vous cliquez sur la catégorie Chat:
+
 <img width="360px" height="667px" src="https://github.com/Arkani66/PetEncyclopedia/blob/master/images/Screenshot_2021-05-28-20-36-28.png">
 
 ## Fabriqué avec
