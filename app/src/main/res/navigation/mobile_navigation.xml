@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/mobile_navigation"
@@ -7,19 +8,77 @@
 
     <fragment
             android:id="@+id/navigation_home"
-            android:name="com.example.petencyclopedia.ui.Dog.DogListFragment"
-            android:label="@string/title_home"
-            tools:layout="@layout/fragment_doglist" />
+            android:name="com.example.petencyclopedia.ui.Home.HomeFragment"
+            android:label="@string/title_doglist"
+            tools:layout="@layout/fragment_home" >
+        <action
+                android:id="@+id/navigation_todog_fromhome"
+                app:destination="@+id/navigation_dog"/>
+        <action
+                android:id="@+id/navigation_tocat_fromhome"
+                app:destination="@+id/navigation_cat"/>
+    </fragment>
+
 
     <fragment
-            android:id="@+id/navigation_dashboard"
+            android:id="@+id/navigation_dog"
+            android:name="com.example.petencyclopedia.ui.Dog.DogListFragment"
+            android:label="@string/title_doglist"
+            tools:layout="@layout/fragment_doglist" >
+            <action
+                android:id="@+id/navigation_to_dogdetail"
+                app:destination="@+id/navigation_dogdetails"/>
+    </fragment>
+    <fragment
+            android:id="@+id/navigation_cat"
             android:name="com.example.petencyclopedia.ui.Cat.CatListFragment"
-            android:label="@string/title_dashboard"
-            tools:layout="@layout/fragment_catlist" />
+            android:label="@string/title_catlist"
+            tools:layout="@layout/fragment_catlist" >
+        <action
+            android:id="@+id/navigation_to_catdetails"
+            app:destination="@+id/navigation_catdetails"/>
+    </fragment>
 
     <fragment
             android:id="@+id/navigation_notifications"
             android:name="com.example.petencyclopedia.ui.notifications.NotificationsFragment"
             android:label="@string/title_notifications"
-            tools:layout="@layout/fragment_notifications" />
+            tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/navigation_to_notifications"
+            app:destination="@+id/navigation_notifications"/>
+    </fragment>
+    <fragment
+            android:id="@+id/navigation_dogdetails"
+            android:name="com.example.petencyclopedia.ui.Dog.DogDetailFragment"
+            android:label="@string/title_dogdetail"
+            tools:layout="@layout/fragment_dog_detail" >
+        <action
+            android:id="@+id/navigation_to_dog"
+            app:destination="@+id/navigation_dog">
+            <argument
+                    android:name="id_doggo"
+                    app:argType="integer"
+                    android:defaultValue="0" />
+            <argument
+                    android:name="name_doggo"
+                    app:argType="string"
+                    android:defaultValue="null" />
+        </action>
+    </fragment>
+    <fragment
+            android:id="@+id/navigation_catdetails"
+            android:name="com.example.petencyclopedia.ui.Cat.CatDetailFragment"
+            android:label="@string/title_catdetail"
+            tools:layout="@layout/fragment_cat_detail" >
+        <action
+                android:id="@+id/navigation_to_cat"
+                app:destination="@+id/navigation_cat">
+           <argument
+                    android:name="name_kitten"
+                    app:argType="string"
+                    android:defaultValue="null" />
+        </action>
+    </fragment>
+
 </navigation>

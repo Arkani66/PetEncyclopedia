@@ -1,9 +1,22 @@
 <resources>
     <string name="app_name">PetEncyclopedia</string>
     <string name="btn_accueil">Enter the Encyclopedia</string>
-    <string name="message_accueil_btn">Vous allez accéder au PetEncyclopedia !</string>
+    <string name="message_accueil_btn">You\'re entering the PetEncyclopedia !</string>
     <string name="title_activity_naviguation_choice">MainActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_doglist">Dog</string>
+    <string name="title_catlist">Cat</string>
+    <string name="title_dogdetail">Dog Detail</string>
+    <string name="button_return_dog">Going back on Dogs</string>
+    <string name="button_return_cat">Going back on Cats</string>
+    <string name="title_catdetail">Cat Detail</string>
+    <string name="title_notifications">Favorites</string>
+    <string name="Dogliste_title">Here are the different dogs races !Click on it to see the informations</string>
+    <string name="Catliste_title">Here are the different cats races !Click on it to see the informations</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_home">Please choose your category !</string>
+    <string name="hello_homedog">I see you\'re a dog person </string>
+    <string name="hello_homecat">I see you\'re a cat person </string>
+    <string name="error">An error has occured ! Please retry later</string>
 </resources>
