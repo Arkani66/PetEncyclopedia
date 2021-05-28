@@ -20,8 +20,11 @@ Ce qu'il est requis pour commencer avec PetEncyclopedia...
 
 Maintenant que le plus dur est passé, vous pouvez enfin profiter de la connaissance que vous apporte PetEncyclopedia.
 Tout d'abord vous arrivez sur l'écran d'accueil
+<img width="360px" height="667px" src="https://github.com/Arkani66/PetEncyclopedia/blob/master/images/Screenshot_2021-05-28-20-36-18.png">
 
 <img width="360px" height="667px" src="https://github.com/Arkani66/PetEncyclopedia/blob/master/images/Screenshot_2021-05-28-20-36-11.png">
+
+<img width="360px" height="667px" src="https://github.com/Arkani66/PetEncyclopedia/blob/master/images/Screenshot_2021-05-28-20-36-28.png">
 
 ## Fabriqué avec
 
