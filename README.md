@@ -13,7 +13,7 @@ Cette application nécessite un accès à internet pour fonctionner au maximum d
 Ce qu'il est requis pour commencer avec PetEncyclopedia...
 
 - Connection Internet
-- Android Studio buildTools version : 30.0.3
+- Android Studio 4.2, buildTools version : 30.0.3
 - minSDKversion : 16
 
 ### Fonctionnement
