@@ -52,7 +52,6 @@ class CatDetailFragment : Fragment() {
     private lateinit var kitten_image: ImageView
     private lateinit var kitten_indoor_image: ImageView
     private lateinit var kitten_affection_image: ImageView
-    private lateinit var kitten_energy_image: ImageView
     private lateinit var kitten_dog_image: ImageView
     private lateinit var kitten_vocalisation_image: ImageView
 
@@ -98,7 +97,6 @@ class CatDetailFragment : Fragment() {
 
         kitten_indoor_image = view.findViewById(R.id.kitten_detail_indoor_bar)
         kitten_affection_image = view.findViewById(R.id.kitten_detail_affection_bar)
-        kitten_energy_image = view.findViewById(R.id.kitten_detail_dog_bar)
         kitten_dog_image = view.findViewById(R.id.kitten_detail_dog_bar)
         kitten_vocalisation_image = view.findViewById(R.id.kitten_detail_vocalisation_bar)
 
@@ -123,7 +121,6 @@ class CatDetailFragment : Fragment() {
                 .into(kitten_image)
             printingAffection()
             printingDogFriendly()
-            printingGrooming()
             printingIndoor()
             printingVocalisation()
         }
@@ -133,25 +130,6 @@ class CatDetailFragment : Fragment() {
 
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CatDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CatDetailFragment().apply {
-                //arguments = Bundle().apply {
-                //    putString(ARG_PARAM1, param1)
-                //    putString(ARG_PARAM2, param2)
-                //}
-            }
-    }
     fun printingAffection(){
         //affection
         if(kitten.affection_level == 0){
@@ -229,46 +207,6 @@ class CatDetailFragment : Fragment() {
                 .load(R.drawable.catbar5)
                 .centerCrop()
                 .into(kitten_indoor_image)
-        }
-    }
-
-    fun printingGrooming(){
-        //grooming
-        if(kitten.grooming == 0){
-            Glide.with(this)
-                .load(R.drawable.catbar0)
-                .centerCrop()
-                .into(kitten_energy_image)
-        }
-        else if(kitten.grooming == 1){
-            Glide.with(this)
-                .load(R.drawable.catbar1)
-                .centerCrop()
-                .into(kitten_energy_image)
-        }
-        else if(kitten.grooming == 2){
-            Glide.with(this)
-                .load(R.drawable.catbar2)
-                .centerCrop()
-                .into(kitten_energy_image)
-        }
-        else if(kitten.grooming == 3){
-            Glide.with(this)
-                .load(R.drawable.catbar3)
-                .centerCrop()
-                .into(kitten_energy_image)
-        }
-        else if(kitten.grooming == 4){
-            Glide.with(this)
-                .load(R.drawable.catbar4)
-                .centerCrop()
-                .into(kitten_energy_image)
-        }
-        else {
-            Glide.with(this)
-                .load(R.drawable.catbar5)
-                .centerCrop()
-                .into(kitten_energy_image)
         }
     }
 

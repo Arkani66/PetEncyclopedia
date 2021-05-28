@@ -18,12 +18,13 @@
 
     <ImageView
             android:id="@+id/bckgrnd_img"
-            android:src="@drawable/chatetcasque"
-            android:layout_width="400dp"
+            android:src="@drawable/catanddog"
+            android:layout_width="600dp"
             android:layout_height="1024dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button

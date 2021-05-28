@@ -46,11 +46,11 @@ class HomeFragment : Fragment() {
         imagedog = view.findViewById(R.id.button_dog)
 
         Glide.with(this)
-            .load(R.drawable.cat_icon)
+            .load(R.drawable.funnycat)
             .centerCrop()
             .into(imagecat)
         Glide.with(this)
-            .load(R.drawable.dog_icon)
+            .load(R.drawable.happydog)
             .centerCrop()
             .into(imagedog)
 

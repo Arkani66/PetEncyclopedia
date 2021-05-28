@@ -65,4 +65,5 @@ class CatViewModel : ViewModel(){
         address = "catbar"+kitten.indoor.toString()
         return address
     }
+
 }

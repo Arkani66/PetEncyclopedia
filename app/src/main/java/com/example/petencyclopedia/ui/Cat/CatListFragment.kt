@@ -40,7 +40,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CatListFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
     private var _binding: FragmentCatlistBinding? = null
     private lateinit var mrecyclerview : RecyclerView
     private val madapterView = KittenAdaptater(listOf(), ::onClickedCat)
