@@ -87,38 +87,6 @@ class CatListFragment : Fragment() {
             mloader.isVisible = mcatModel is CatLoader
             mtexterror.isVisible = mcatModel is CatFailure
             if(mcatModel is CatSuccess) madapterView.updateList(mcatModel.catlist)
-            //else mrecyclerview.isInvisible
-
-        })
-    }
-
-    private fun callApi(){
-       // val retrofit = Retrofit.Builder()
-       //     .baseUrl("https://api.thecatapi.com/v1/")
-       //     .addConverterFactory(GsonConverterFactory.create())
-       //     .build()
-//
-       // val mkittenAPI: CatAPI = retrofit.create(CatAPI::class.java)
-
-        SingletonCat.mkittenApi.getcatList("ca2d4dd4-288f-4b05-acc3-c0f26d579e4d").enqueue(object : Callback<List<Cat>> {
-            override fun onFailure(call: Call<List<Cat>>, t: Throwable) {
-                val mkittenresponse : ArrayList<Cat> = arrayListOf<Cat>().apply {
-                    add(
-                        Cat(Weight("inconnu","inconnu"),"inconnu","inconnu","inconnu","inconnu","inconnu","inconnu","inconnu",0,0,"inconnu",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"inconnu","inconnu",
-                            Image("inconnu",0,0,"inconnu")))
-                }
-                madapterView.updateList(mkittenresponse)
-            }
-
-            override fun onResponse(
-                call: Call<List<Cat>>,
-                response: Response<List<Cat>>
-            ) {
-                if(response.isSuccessful && response.body()!=null){
-                    val mkittenresponse : List<Cat> = response.body()!!
-                    madapterView.updateList(mkittenresponse)
-                }
-            }
         })
     }
 
