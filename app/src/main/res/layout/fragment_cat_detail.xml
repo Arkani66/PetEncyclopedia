@@ -46,7 +46,6 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/kitten_detail_image"/>
 
-
         <TextureView
                 android:id="@+id/kitten_detail_mlayout"
                 android:layout_width="match_parent"
@@ -253,7 +252,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="@id/kitten_detail_mlayout7" />
 
-        <TextureView
+        <ImageView
                 android:id="@+id/kitten_detail_mlayoutbottom"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
