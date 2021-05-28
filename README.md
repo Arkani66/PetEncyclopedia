@@ -31,12 +31,15 @@ De même si vous cliquez sur la catégorie Chat:
 
 <img width="360px" height="667px" src="https://github.com/Arkani66/PetEncyclopedia/blob/master/images/Screenshot_2021-05-28-20-36-28.png">
 
+**A venir** Gestion des Favoris : ajoutez vos animaux préférés à vos favoris pour pouvoir les retrouver rapidement
+
 ## Fabriqué avec
 
 Android Studio - Kotlin
 Retrofit
 Glide
 thedogapi - (https://thedogapi.com).
+
 thecatapi - (https://thecatapi.com).
 
 
